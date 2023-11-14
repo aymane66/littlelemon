@@ -12,6 +12,5 @@ restaurant/booking/
 
 auth/
 
-auth/
 
 api-token-auth/
