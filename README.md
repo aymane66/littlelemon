@@ -1,90 +1,79 @@
-# LittleLemon Restaurant Project
+# LittleLemon Reastaurant API
 
-## Overview
+A RESTful API built with Django REST Framework for managing a restaurant's **menu items** and **table bookings**.  
+This project demonstrates API design, authentication, permissions, and database modeling — suitable for portfolio presentation.
 
-LittleLemon Restaurant is a Django-based web application for managing a restaurant's menu and bookings. The project includes features such as displaying the menu, handling bookings, and providing a simple web interface for customers and staff.
+---
 
-## Content
+## Features
+- **Menu Management**  
+  - List, create, update, and delete menu items  
+- **Booking Management**  
+  - Book tables with guest count and reservation date  
+  - CRUD operations via API  
+- **Authentication**  
+  - Token-based authentication using **Djoser** + DRF  
+  - Session authentication for browsing via the DRF UI  
+- **Permissions**  
+  - Public users → read-only access to menu  
+  - Authenticated users → full CRUD access to menu & bookings  
 
-### Project Structure
+---
 
-The project follows a typical Django structure, with the main components being:
+## Tech Stack
+- **Backend:** Django 4.2, Django REST Framework
+- **Authentication:** Djoser (Token Auth)
+- **Database:** SQLite (default) or MySQL
+- **Serialization:** DRF ModelSerializers
+- **Extra Renderers:** JSON, Browsable API, XML
 
-- **littlelemon:** The main project directory.
-  - **restaurant:** The Django app handles restaurant-related functionality (menu, bookings).
-  - **templates:** Contains HTML templates for rendering views.
-  - **static:** Holds static files like CSS (styles.css) and images.
+---
 
+## API Endpoints
 
-### Features
+### Authentication
+- `POST /auth/users/` → Register new user  
+- `POST /auth/token/login/` → Get auth token  
+- `POST /api-token-auth/` → Get token (DRF built-in)  
 
-- **Menu Management:**
-  - Add, update, and delete menu items.
-  - View a list of available menu items with details such as title, price, and inventory.
+### Menu
+- `GET /api/v1/menu/` → List all menu items  
+- `POST /api/v1/menu/` → Add a new menu item *(auth required)*  
+- `GET /api/v1/menu/<id>/` → Retrieve single menu item  
+- `PUT /api/v1/menu/<id>/` → Update menu item *(auth required)*  
+- `DELETE /api/v1/menu/<id>/` → Delete menu item *(auth required)*  
 
-- **Booking System:**
-  - Record customer bookings with details like the customer's name, number of guests, and booking date.
-  - Utilizes Django REST framework's powerful `ModelViewSet` for handling booking information.
+### Booking
+- `GET /api/v1/booking/` → List all bookings *(auth required)*  
+- `POST /api/v1/booking/` → Create a booking *(auth required)*  
+- `GET /api/v1/booking/<id>/` → Retrieve booking *(auth required)*  
+- `PUT /api/v1/booking/<id>/` → Update booking *(auth required)*  
+- `DELETE /api/v1/booking/<id>/` → Cancel booking *(auth required)*  
 
-- **Authentication:**
-  - Secure user authentication using Djoser, providing features like token authentication and user registration.
+---
 
+## Installation & Setup
 
-### Usage
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/aymane66/littlelemon.git
-    ```
-
-2. Install dependencies:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. Run migrations:
-
-    ```bash
-    python manage.py migrate
-    ```
-
-4. Start the development server:
-
-    ```bash
-    python manage.py runserver
-    ```
-
-5. Access the application at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-
-### Dependencies
-
-- Django 4.2.7
-- djangorestframework
-- djoser
-
-## What I Have Learned
-
-Throughout the development of LittleLemon Restaurant, I have gained valuable experience in:
-
-- Setting up a Django project for a restaurant management system.
-- Configuring Django settings, including database and authentication settings.
-- Implementing RESTful APIs using Django REST framework.
-- Integrating token-based authentication with Djoser.
-- Creating models for database interaction and registering them with the Django admin.
-- Writing serializers to transform Django models into JSON representations.
-- Defining URL patterns and views for handling HTTP requests.
-- Utilizing class-based views and view sets for efficient code organization.
-- Configuring and using a MySQL database with Django.
-- Collaborating with middleware for request/response processing.
-
-## Future Enhancements
-
-- I am currently dedicating my attention to Backend technologies and I will complete the front end for this project in the near future.
-- Your feedback is appreciated.
+1. **Clone the repo**
+  ```bash
+   git clone https://github.com/yourusername/littlelemon-api.git
+   cd littlelemon-api
 
 
+2. **Create virtual environment**
+python3 -m venv env
+source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate      # Windows
 
-Explore the project freely. Contact me for issues or suggestions.
 
+3. **Install dependencies**
+
+pip install -r requirements.txt
+
+
+4. **Run migrations**
+python3 manage.py migrate
+
+
+5. **Start the server**
+python3 manage.py runserver
