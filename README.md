@@ -55,25 +55,33 @@ This project demonstrates API design, authentication, permissions, and database 
 ## Installation & Setup
 
 1. **Clone the repo**
-  ```bash
-   git clone https://github.com/yourusername/littlelemon-api.git
-   cd littlelemon-api
-
+```bash
+  git clone https://github.com/yourusername/littlelemon-api.git
+  cd littlelemon-api
+```
 
 2. **Create virtual environment**
+```bash
 python3 -m venv env
+```
+
+```bash
 source venv/bin/activate   # macOS/Linux
 venv\Scripts\activate      # Windows
+```
 
 
 3. **Install dependencies**
-
+```bash
 pip install -r requirements.txt
-
+```
 
 4. **Run migrations**
+```bash
 python3 manage.py migrate
-
+```
 
 5. **Start the server**
+```bash
 python3 manage.py runserver
+```
